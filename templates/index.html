@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>数字艺术作品 - 立即支付</title>
+    <style>
+        body { font-family: system-ui; text-align: center; padding: 40px; background: #f8f9fa; }
+        h1 { color: #333; }
+        .buttons { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; max-width: 600px; margin: 30px auto; }
+        button { padding: 15px 22px; font-size: 17px; border: none; background: #635bff; color: white; border-radius: 10px; cursor: pointer; }
+        button:hover { background: #4b47ff; }
+        input { padding: 16px; font-size: 18px; width: 220px; text-align: center; border: 2px solid #ddd; border-radius: 10px; }
+        .pay-btn { background: #00d4aa; padding: 18px 70px; font-size: 20px; margin-top: 20px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>数字艺术作品</h1>
+    <p>支持支付宝、微信支付、银行卡</p>
+    
+    <div class="buttons">
+        <button onclick="quickPay(520)">520元</button>
+        <button onclick="quickPay(666)">666元</button>
+        <button onclick="quickPay(888)">888元</button>
+        <button onclick="quickPay(999)">999元</button>
+        <button onclick="quickPay(1314)">1314元</button>
+        <button onclick="quickPay(5200)">5200元</button>
+        <button onclick="quickPay(6666)">6666元</button>
+        <button onclick="quickPay(8888)">8888元</button>
+    </div>
+
+    <div>
+        <input type="number" id="amount" placeholder="输入其他金额 (100-10000)" min="100" max="10000">
+        <br><br>
+        <button class="pay-btn" onclick="customPay()">立即支付</button>
+    </div>
+
+    <script>
+        function quickPay(amt) {
+            document.getElementById('amount').value = amt;
+            customPay();
+        }
+        function customPay() {
+            let amt = document.getElementById('amount').value;
+            if (amt >= 100 && amt <= 10000) {
+                window.location.href = `/?amount=${amt}`;
+            } else {
+                alert("请输入100-10000之间的金额");
+            }
+        }
+    </script>
+</body>
+</html>
